@@ -10,17 +10,21 @@
     <form>
       <h2>Enter your support query</h2>
       <ul>
+<!-- All of the user names in our application consist of a single letter, followed by a dot, followed by three or more letters or numbers. All letters should be lowercase.
+All of the email addresses for our users consist of one or more letters (lower or upper case) or numbers, followed by "@bigcorp.eu".
+Remove the length validation from the phone number field if it is present, and set it so that it accepts 10 digits — either 10 digits in a row, or a pattern of three digits, three digits, then four digits, separated by either spaces, dashes, or dots. [a-z] or [^.] "\W\/.{3,}/" -->
+
         <li>
           <label for="uname">User name:</label>
-          <input type="text" name="uname" id="uname" minlength="5" maxlength="20" required>
+          <input type="text" name="uname" id="uname" minlength="5" pattern="\/.{3,}/" maxlength="20" required>
         </li>
         <li>
           <label for="email">Email address:</label>
-          <input type="email" name="email" id="email" required>
+          <input type="email" name="email" id="email" pattern="/+@bigcorp\.eu$/" required>
         </li>
         <li>
           <label for="phone">Phone number:</label>
-          <input type="tel" name="phone" id="phone" maxlength="15" required>
+          <input type="tel" name="phone" id="phone" pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$" required>
         </li>
         <li>
           <label for="comment">Comment:</label>
@@ -32,6 +36,19 @@
         </li>
       </ul>
     </form>
+
+    
+      <form id ="form2" novalidate>
+        <h2>E-mail Sign-up</h2>
+        <p>
+        <label for="mail">Please provide an e-mail address:
+        <input type="email" id="mail" name="mail" minlength="10" required>
+        <span class="error" aria-live="polite"></span>
+      </label>
+      </p>
+        <button>Submit</button>
+      </form>
+    
     <script src="script.js"></script>
   </body>
 </html>

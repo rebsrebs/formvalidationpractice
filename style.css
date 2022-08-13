@@ -11,6 +11,10 @@
         box-sizing: border-box;
       }
 
+      form {
+        margin-bottom: 50px;
+      }
+
       li {
         display: flex;
         list-style: none;
@@ -22,3 +26,66 @@
       input {
         width: auto;
       }
+
+      p * {
+        display: block;
+      }
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+textarea,
+fieldset {
+  width : 100%;
+  border: 1px solid #333;
+  box-sizing: border-box;
+}
+
+/* input:invalid {
+  box-shadow: 0 0 5px 1px red;
+}
+
+input:focus:invalid {
+  box-shadow: none;
+} */
+
+input[type=email]{
+  -webkit-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  border: 1px solid #333;
+  margin: 0;
+
+  font-family: inherit;
+  font-size: 90%;
+
+  box-sizing: border-box;
+}
+
+/* This is our style for the invalid fields */
+input:invalid{
+  border-color: rgb(153, 0, 87);
+  background-color: rgb(224, 178, 140);
+}
+
+input:focus:invalid {
+  outline: none;
+  border-color:aqua;
+}
+
+/* This is the style of our error messages */
+.error {
+  width  : 100%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+}
+
+.error.active {
+  padding: 0.3em;
+}
