@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8"/>
+    <title>Form validation: Task 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <div class="formcontainer" id="formcontainer2">
+      <h3>Register</h3>
+      <form class="information">
+        <label for="email">Email address*:</label>
+        <input type="email" name="email" id="email" required>
+        <p class="error" id="emailError"></p>
+
+        <label for="country">Country:</label>
+        <input type="country" name="country" id="country">
+        <p class="error" id="countryError"></p>
+
+        <label for="zipcode">Zip Code:</label>
+        <input type="zipcode" name="zipcode" id="zipcode">
+        <p class="error" id="zipcodeError"></p>
+
+        <label for="password">Password:*</label>
+        <input type="password" name="password" id="password" required>
+        <p class="error" id="passwordError"></p>
+
+        <label for="confirmPassword">Confirm password:*</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <p class="error" id="confirmPasswordError"></p>
+
+        <button type="button" class="submitButton">
+          Submit
+        </button>
+
+      </form>
+      <div class="requiredKey">* = required</div>
+    </div>
+    
+  </body>
+
+</html>
