@@ -4,31 +4,37 @@
   <head>
     <meta charset="utf-8"/>
     <title>Form validation: Task 1</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style2.css">
   </head>
 
   <body>
     <div class="formcontainer" id="formcontainer2">
-      <h3>Register</h3>
       <form class="information">
-        <label for="email">Email address*:</label>
-        <input type="email" name="email" id="email" required>
+        <h3 class="formheader">Register</h3>
+        <label for="email" class="label-hidden">Email address*:</label>
+        <input type="email" name="email" id="email" placeholder="E-mail address*" required>
         <p class="error" id="emailError"></p>
 
-        <label for="country">Country:</label>
-        <input type="country" name="country" id="country">
+        <label for="country" class="label-hidden">Country:</label>
+        <input type="country" name="country" id="country" placeholder="Country">
         <p class="error" id="countryError"></p>
 
-        <label for="zipcode">Zip Code:</label>
-        <input type="zipcode" name="zipcode" id="zipcode">
+        <label for="zipcode" class="label-hidden">Zip Code:</label>
+        <input type="zipcode" name="zipcode" id="zipcode" placeholder="Zip code">
         <p class="error" id="zipcodeError"></p>
 
-        <label for="password">Password:*</label>
-        <input type="password" name="password" id="password" required>
+        <div class="showhide" data-pwd="password">
+          <img src="./images/eye.svg" alt="eye" class="icon">
+        </div>
+        <label for="password" class="label-hidden">Password:*</label>
+        <input type="password" name="password" id="password" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
 
-        <label for="confirmPassword">Confirm password:*</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" required>
+        <div class="showhide" data-pwd="confirmPassword">
+          <img src="./images/eye.svg" alt="eye" class="icon">
+        </div>
+        <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
         <p class="error" id="confirmPasswordError"></p>
 
         <button type="button" class="submitButton">
