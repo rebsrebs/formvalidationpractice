@@ -81,6 +81,7 @@ fieldset {
 }
 
 button {
+  transition: background-color .65s ease;
   background-color: black;
   color: white;
   font-weight: bold;
@@ -154,4 +155,14 @@ input:focus:invalid {
 
 .error.active {
   padding: 0.3em;
+}
+
+button:hover {
+  background-color:rgba(0, 0, 0, 0.55)
+}
+
+button:active {
+  background-color: rgb(234, 235, 242);
+  color: black;
+  transition: none;
 }
