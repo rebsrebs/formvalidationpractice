@@ -88,6 +88,7 @@ button {
   padding: 10px;
   width: fit-content;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .information {
@@ -121,6 +122,11 @@ input, label, .error, button, .formheader {
 .showhide {
   grid-column: 1 / 2;
   margin-right: 15px;
+  cursor: pointer;
+}
+
+input:focus {
+  background-color:rgb(234, 235, 242);
 }
 
 /* This is our style for the invalid fields */
