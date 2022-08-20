@@ -1,7 +1,12 @@
 const emailAddress = document.getElementById('email');
 const emailError = document.getElementById('emailError');
+const zipcode = document.getElementById('zipcode');
+const zipcodeError = document.getElementById('zipcodeError');
+const country = document.getElementById('country');
 const form3  = document.getElementById('form3');
 
+
+// CHECKING ON INPUT
 emailAddress.addEventListener('input', (event) => {
   // Each time the user types something, we check if the
   // form fields are valid.
@@ -13,22 +18,50 @@ emailAddress.addEventListener('input', (event) => {
     emailError.className = 'error'; // Reset the visual state of the message
   } else {
     // If there is still an error, show the correct error
-    showError();
+    emailShowError();
   }
 });
 
+// CHECKING ZIPCODE ON INPUT
+zipcode.addEventListener('input', (event) => {
+
+  var usmx = new RegExp("^\\d{5}(-{0,1}\\d{4})?$");
+  var can = new RegExp("^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$");
+  
+  // if country is united states
+  if (country.value == "selectCountry") {
+    zipcodeShowError();
+    return;
+  } else if (country.value == "unitedStates" || country.value == "mexico") {
+    if (!usmx.test(zipcode.toString())) {
+      zipcodeShowError();
+      return;
+  }
+  } else if (country.value == "canada") {
+    if (!can.test(zipcode.toString())) {
+      zipcodeShowError();
+      return;
+    }
+  } else {
+  zipcodeError.textContent = ''; // Reset the content of the message
+  zipcodeError.className = 'error'; // Reset the visual state of the message
+  }
+});
+
+
+
+// CHECKING ON SUBMIT
 form3.addEventListener('submit', (event) => {
   // if the email field is valid, we let the form submit
-
   if (!emailAddress.validity.valid) {
     // If it isn't, we display an appropriate error message
-    showError();
+    emailShowError();
     // Then we prevent the form from being sent by canceling the event
     event.preventDefault();
   }
 });
 
-function showError() {
+function emailShowError() {
   if (emailAddress.validity.valueMissing) {
     // If the field is empty,
     // display the following error message.
@@ -42,7 +75,11 @@ function showError() {
     // display the following error message.
     emailError.textContent = `Email should be at least ${emailAddress.minLength} characters; you entered ${emailAddress.value.length}.`;
   }
-
   // Set the styling appropriately
   emailError.className = 'error active';
+}
+
+function zipcodeShowError() {
+  zipcodeError.textContent = 'Please enter a valid Canadian zip code';
+  zipcodeError.className = 'error active';
 }

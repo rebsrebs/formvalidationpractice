@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <div class="formcontainer" id="formcontainer2">
+    <div class="formcontainer" id="formcontainer3">
       <form class="information" id="form3" novalidate>
         <h3 class="formheader">Register</h3>
 
@@ -21,21 +21,19 @@
         <label for="country" class="label-hidden">Country:</label>
         <!-- <input type="country" name="country" id="country" placeholder="Country"> -->
         <select name="country" id="country">
-          <option value="">--Please choose a country--</option>
-          <option value="dog">Canada</option>
-          <option value="cat">United States</option>
-          <option value="hamster">Mexico</option>
-          <option value="parrot">France</option>
-          <option value="spider">Spain</option>
-          <option value="goldfish">Germany</option>
+          <option value="selectCountry">--Please choose a country--</option>
+          <option value="canada">Canada</option>
+          <option value="Mexico">Mexico</option>
+          <option value="unitedStates">United States</option>
       </select>
       <p class="error" id="countryError"></p>
-      
 
+      <!-- ZIP CODE -->
         <label for="zipcode" class="label-hidden">Zip Code:</label>
         <input type="zipcode" name="zipcode" id="zipcode" placeholder="Zip code">
         <p class="error" id="zipcodeError"></p>
 
+        <!-- PASSWORD -->
         <div class="showhide" data-pwd="password" data-icon="eye">
           <img src="./images/eye.svg" alt="eye" class="icon">
         </div>
@@ -43,6 +41,7 @@
         <input type="password" name="password" id="password" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
 
+        <!-- CONFIRM PASSWORD -->
         <div class="showhide" data-pwd="confirmPassword" data-icon="eye-off">
           <img src="./images/eye.svg" alt="eye" class="icon">
         </div>
@@ -50,6 +49,7 @@
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
         <p class="error" id="confirmPasswordError"></p>
 
+        <!-- SUBMIT BUTTON -->
         <button type="submit" class="submitButton">
           Submit
         </button>
