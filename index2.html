@@ -9,7 +9,7 @@
 
   <body>
     <div class="formcontainer" id="formcontainer2">
-      <form class="information">
+      <form class="information" id="form3">
         <h3 class="formheader">Register</h3>
         <label for="email" class="label-hidden">Email address*:</label>
         <input type="email" name="email" id="email" placeholder="E-mail address*" required>
@@ -23,14 +23,14 @@
         <input type="zipcode" name="zipcode" id="zipcode" placeholder="Zip code">
         <p class="error" id="zipcodeError"></p>
 
-        <div class="showhide" data-pwd="password">
+        <div class="showhide" data-pwd="password" data-icon="eye">
           <img src="./images/eye.svg" alt="eye" class="icon">
         </div>
         <label for="password" class="label-hidden">Password:*</label>
         <input type="password" name="password" id="password" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
 
-        <div class="showhide" data-pwd="confirmPassword">
+        <div class="showhide" data-pwd="confirmPassword" data-icon="eye-off">
           <img src="./images/eye.svg" alt="eye" class="icon">
         </div>
         <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
@@ -44,7 +44,7 @@
       </form>
       <div class="requiredKey">* = required</div>
     </div>
-    
+    <script src="script2.js"></script>
   </body>
 
 </html>

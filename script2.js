@@ -1,15 +1,6 @@
-const emailAddress = document.getElementById('mail');
-const emailError = document.querySelector('#mail + span.error');
-const form2  = document.getElementById('form2');
-
-// emailAddress.addEventListener("input", (event) => {
-//   if (emailAddress.validity.typeMismatch) {
-//     emailAddress.setCustomValidity("Yo, I am expecting an e-mail address!");
-//     emailAddress.reportValidity();
-//   } else {
-//     emailAddress.setCustomValidity("");
-//   }
-// });
+const emailAddress = document.getElementById('email');
+const emailError = document.getElementById('emailError');
+const form3  = document.getElementById('form3');
 
 emailAddress.addEventListener('input', (event) => {
   // Each time the user types something, we check if the
@@ -26,7 +17,7 @@ emailAddress.addEventListener('input', (event) => {
   }
 });
 
-form2.addEventListener('submit', (event) => {
+form3.addEventListener('submit', (event) => {
   // if the email field is valid, we let the form submit
 
   if (!emailAddress.validity.valid) {
@@ -55,28 +46,3 @@ function showError() {
   // Set the styling appropriately
   emailError.className = 'error active';
 }
-
-
-// don't really understand:
-//const test = email.value.length === 0 || 
-//emailRegExp.test(email.value);
-
-
-
-// when you something with class showhide, 
-document.querySelectorAll('.showhide').addEventListener('click', function(e){
-  // const target = e.target.id;
-  if (e.target.attributes.data-icon.value === 'eye') {
-    console.log('eye');
-  }
-  // if it the image clicked is eye
-  // remove image from div and change it to be eye-off.
-  // toggle type of input from password to type
-  if (e.target.attributes.data-icon.value === 'eye-off') {
-    console.log('eye-off');
-  }
-  // if the image clicked is eye-off
-  // remove image from div and change it to be eye
-  // toggle type of input from type to password
-})
-

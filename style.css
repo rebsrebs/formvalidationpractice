@@ -93,22 +93,7 @@ input:focus:invalid {
   padding: 0.3em;
 }
 
-.information {
-  max-width: 500px;
-}
 
-#formcontainer2 {
-  border-radius: 15px;
-  background-color: rgb(246, 205, 235);
-  padding: 18px;
-  width: fit-content;
-  box-sizing: border-box;
-  color:rgb(24, 32, 120)
-}
-
-input, label, .error, button {
-  grid-column: 1 / 2;
-}
 
 button {
   margin-top: 20px;
@@ -126,8 +111,3 @@ button {
   text-align: right;
 }
 
-.information {
-  display: grid;
-  grid-template-columns: auto 30px;
-  grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
-}
