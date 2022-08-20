@@ -9,15 +9,28 @@
 
   <body>
     <div class="formcontainer" id="formcontainer2">
-      <form class="information" id="form3">
+      <form class="information" id="form3" novalidate>
         <h3 class="formheader">Register</h3>
+
+        <!-- EMAIL -->
         <label for="email" class="label-hidden">Email address*:</label>
         <input type="email" name="email" id="email" placeholder="E-mail address*" required>
         <p class="error" id="emailError"></p>
 
+        <!-- COUNTRY -->
         <label for="country" class="label-hidden">Country:</label>
-        <input type="country" name="country" id="country" placeholder="Country">
-        <p class="error" id="countryError"></p>
+        <!-- <input type="country" name="country" id="country" placeholder="Country"> -->
+        <select name="country" id="country">
+          <option value="">--Please choose a country--</option>
+          <option value="dog">Canada</option>
+          <option value="cat">United States</option>
+          <option value="hamster">Mexico</option>
+          <option value="parrot">France</option>
+          <option value="spider">Spain</option>
+          <option value="goldfish">Germany</option>
+      </select>
+      <p class="error" id="countryError"></p>
+      
 
         <label for="zipcode" class="label-hidden">Zip Code:</label>
         <input type="zipcode" name="zipcode" id="zipcode" placeholder="Zip code">
@@ -37,7 +50,7 @@
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
         <p class="error" id="confirmPasswordError"></p>
 
-        <button type="button" class="submitButton">
+        <button type="submit" class="submitButton">
           Submit
         </button>
 

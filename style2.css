@@ -44,7 +44,8 @@ form {
   clip: rect(0 0 0 0);
 }
 
-input {
+input, 
+select {
   width: auto;
   padding: 10px;
   border-style: none;
@@ -60,6 +61,7 @@ input[type="password"],
 input[type="country"],
 input[type="zipcode"],
 textarea,
+select,
 fieldset {
   width : 100%;
   /* border: 1px solid #333; */
@@ -76,7 +78,8 @@ fieldset {
   grid-template-rows: auto auto auto auto auto auto auto auto auto auto;
 }
 
-.information input {
+.information input,
+select {
   height: 48px;
 }
 
@@ -114,12 +117,12 @@ button {
   font-size: 16px;
 }
 
-input {
+input, select {
   font-size: 16px;
 }
 
 /* Everything in right column */
-input, label, .error, button, .formheader {
+input, label, .error, button, .formheader, select {
   grid-column: 2 / 3;
   width: 100%;
 }
