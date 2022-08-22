@@ -6,6 +6,9 @@ const country = document.getElementById('country');
 const form3  = document.getElementById('form3');
 const password = document.getElementById('password');
 const passwordError = document.getElementById('passwordError');
+const confirmPassword = document.getElementById('confirmPassword');
+const confirmPasswordError = document.getElementById('confirmPasswordError');
+
 
 
 // CHECKING ON INPUT
@@ -132,5 +135,24 @@ password.addEventListener('input', (event) => {
   } else {
     // If there is still an error, show the correct error
     passwordError.textContent = 'Must contain at least 8 characters, 1 letter, 1 number and 1 special character.'
+  }
+});
+
+// CHECKING ON INPUT
+confirmPassword.addEventListener('input', (event) => {
+  console.log(`password.value is ${password.value}`);
+  console.log(`confirmPassword.value is ${confirmPassword.value}`);
+  
+  // Each time the user types something, we check if the
+  // form fields are valid.
+  // if the email address is valid:
+  if (confirmPassword.value != password.value) {
+    // If there is still an error, show the correct error
+    confirmPasswordError.textContent = 'Must match password.'
+  } else {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    confirmPasswordError.textContent = ''; // Reset the content of the message
+    confirmPasswordError.className = 'error'; // Reset the visual state of the message
   }
 });
