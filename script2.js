@@ -4,6 +4,8 @@ const zipcode = document.getElementById('zipcode');
 const zipcodeError = document.getElementById('zipcodeError');
 const country = document.getElementById('country');
 const form3  = document.getElementById('form3');
+const password = document.getElementById('password');
+const passwordError = document.getElementById('passwordError');
 
 
 // CHECKING ON INPUT
@@ -115,3 +117,20 @@ function emailShowError() {
 //   zipcodeError.textContent = 'Please enter a valid Canadian zip code';
 //   zipcodeError.className = 'error active';
 // }
+
+
+// CHECKING ON INPUT
+password.addEventListener('input', (event) => {
+  // Each time the user types something, we check if the
+  // form fields are valid.
+  // if the email address is valid:
+  if (password.validity.valid) {
+    // In case there is an error message visible, if the field
+    // is valid, we remove the error message.
+    passwordError.textContent = ''; // Reset the content of the message
+    passwordError.className = 'error'; // Reset the visual state of the message
+  } else {
+    // If there is still an error, show the correct error
+    passwordError.textContent = 'Must contain at least 8 characters, 1 letter, 1 number and 1 special character.'
+  }
+});
