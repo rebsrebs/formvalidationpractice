@@ -156,3 +156,22 @@ confirmPassword.addEventListener('input', (event) => {
     confirmPasswordError.className = 'error'; // Reset the visual state of the message
   }
 });
+
+// eye buttons
+
+const eyes = document.querySelectorAll('.showhide');
+
+ for (let i = 0; i < eyes.length; i++) {
+     eyes[i].addEventListener("click", function(event) {
+      let id = event.target.getAttribute("data-pwd");
+  let targetInput = document.getElementById(id)
+  console.log(id);
+  console.log(targetInput);
+  console.log(targetInput.type);
+  if (targetInput.type=='password') {
+    targetInput.type='text';
+  } else if (targetInput.type=='text') {
+    targetInput.type='password';
+  }
+     });
+ }

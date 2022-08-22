@@ -34,16 +34,16 @@
         <p class="error hidden" id="zipcodeError"></p>
 
         <!-- PASSWORD -->
-        <div class="showhide" data-pwd="password" data-icon="eye">
-          <img src="./images/eye.svg" alt="eye" class="icon">
+        <div data-icon="eye">
+          <img src="./images/eye.svg" alt="eye" class="icon showhide" data-pwd="password">
         </div>
         <label for="password" class="label-hidden">Password:*</label>
         <input type="password" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
 
         <!-- CONFIRM PASSWORD -->
-        <div class="showhide" data-pwd="confirmPassword" data-icon="eye-off">
-          <img src="./images/eye.svg" alt="eye" class="icon">
+        <div data-icon="eye-off">
+          <img src="./images/eye.svg" alt="eye" class="icon showhide" data-pwd="confirmPassword">
         </div>
         <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
