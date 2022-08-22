@@ -164,14 +164,17 @@ const eyes = document.querySelectorAll('.showhide');
  for (let i = 0; i < eyes.length; i++) {
      eyes[i].addEventListener("click", function(event) {
       let id = event.target.getAttribute("data-pwd");
+  let targetIcon = event.target;
   let targetInput = document.getElementById(id)
   console.log(id);
   console.log(targetInput);
   console.log(targetInput.type);
   if (targetInput.type=='password') {
     targetInput.type='text';
+    targetIcon.src='./images/eye-off.svg';
   } else if (targetInput.type=='text') {
     targetInput.type='password';
+    targetIcon.src='./images/eye.svg';
   }
      });
  }
