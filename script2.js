@@ -37,34 +37,39 @@ country.addEventListener('input', () => {
 
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('input', (event) => {
+  // get current zip code input value
   let userZipCode = document.getElementById("zipcode").value;
   
+  // create regex expressions
   var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
-  // var usmx = new RegExp("^\\d{5}(-{0,1}\\d{4})?$");
   var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
   
-  // if country is blank
+  // if country is US or Mexico
   if (country.value === "unitedStates" || country.value === "mexico") {
     console.log('country is US or Mexico');
     console.log(userZipCode);
+
+    // if zip code fails regex test show error message
     if (!usmx.test(userZipCode.toString())) {
       zipcodeError.textContent = 'Please enter a valid zip code.';
       zipcodeError.className = 'error active';  
-    } else {
-      console.log('no error');
-      zipcodeError.textContent = ''; // Reset the content of the message
-      zipcodeError.className = 'error'; // Reset the visual state of the message
-    }
+    } 
+      else {
+        console.log('no error');
+        zipcodeError.textContent = ''; // Reset the content of the message
+        zipcodeError.className = 'error'; // Reset the visual state of the message
+      }
   } else if (country.value === "canada") {
     if (!can.test(userZipCode.toString())) {
       zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
     zipcodeError.className = 'error active';
     }
+      else {
+        console.log('no error');
+        zipcodeError.textContent = ''; // Reset the content of the message
+        zipcodeError.className = 'error'; // Reset the visual state of the message
+      }
   } 
-  // else {
-  // zipcodeError.textContent = ''; // Reset the content of the message
-  // zipcodeError.className = 'error'; // Reset the visual state of the message
-  // }
 }
 );
 
