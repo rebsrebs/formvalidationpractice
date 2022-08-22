@@ -134,6 +134,7 @@ password.addEventListener('input', (event) => {
     passwordError.className = 'error'; // Reset the visual state of the message
   } else {
     // If there is still an error, show the correct error
+    passwordError.className = 'error active';
     passwordError.textContent = 'Must contain at least 8 characters, 1 letter, 1 number and 1 special character.'
   }
 });
@@ -148,6 +149,7 @@ confirmPassword.addEventListener('input', (event) => {
   // if the email address is valid:
   if (confirmPassword.value != password.value) {
     // If there is still an error, show the correct error
+    confirmPasswordError.className = 'error active';
     confirmPasswordError.textContent = 'Must match password.'
   } else {
     // In case there is an error message visible, if the field
