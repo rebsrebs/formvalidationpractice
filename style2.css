@@ -162,3 +162,7 @@ button:active {
   color: black;
   transition: none;
 }
+
+.hidden {
+  display: none;
+}

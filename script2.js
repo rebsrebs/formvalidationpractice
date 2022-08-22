@@ -22,24 +22,36 @@ emailAddress.addEventListener('input', (event) => {
   }
 });
 
+
+// CHECK FOR COUNTRY
+country.addEventListener('input', () => {
+  if (country.value != "selectCountry") {
+    zipcode.classList.remove('hidden');
+    zipcodeError.classList.remove('hidden');
+  } else {
+    zipcode.classList.add('hidden');
+    zipcodeError.classList.add('hidden');
+  }
+})
+
+
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('input', (event) => {
 
   var usmx = new RegExp("^\\d{5}(-{0,1}\\d{4})?$");
   var can = new RegExp("^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$");
   
-  // if country is united states
-  if (country.value == "selectCountry") {
-    zipcodeShowError();
-    return;
-  } else if (country.value == "unitedStates" || country.value == "mexico") {
+  // if country is blank
+  if (country.value == "unitedStates" || country.value == "mexico") {
     if (!usmx.test(zipcode.toString())) {
-      zipcodeShowError();
+      zipcodeError.textContent = 'Please enter a valid zip code.';
+    zipcodeError.className = 'error active';
       return;
   }
   } else if (country.value == "canada") {
     if (!can.test(zipcode.toString())) {
-      zipcodeShowError();
+      zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
+    zipcodeError.className = 'error active';
       return;
     }
   } else {
@@ -79,7 +91,14 @@ function emailShowError() {
   emailError.className = 'error active';
 }
 
-function zipcodeShowError() {
-  zipcodeError.textContent = 'Please enter a valid Canadian zip code';
-  zipcodeError.className = 'error active';
-}
+// function zipcodeShowError() {
+//   if (zipcode.validity.valueMissing) {
+//     zipcodeError.textContent = 'Please enter a zip code';
+//   } else if () {
+
+//   }
+//     // If the field is empty,
+//     // display the following error message.
+//   zipcodeError.textContent = 'Please enter a valid Canadian zip code';
+//   zipcodeError.className = 'error active';
+// }
