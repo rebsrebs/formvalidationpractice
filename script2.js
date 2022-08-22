@@ -23,7 +23,7 @@ emailAddress.addEventListener('input', (event) => {
 });
 
 
-// CHECK FOR COUNTRY
+// CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
 country.addEventListener('input', () => {
   if (country.value != "selectCountry") {
     zipcode.classList.remove('hidden');
@@ -37,28 +37,36 @@ country.addEventListener('input', () => {
 
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('input', (event) => {
-
-  var usmx = new RegExp("^\\d{5}(-{0,1}\\d{4})?$");
-  var can = new RegExp("^(?!.*[DFIOQU])[A-VXY][0-9][A-Z]●?[0-9][A-Z][0-9]$");
+  let userZipCode = document.getElementById("zipcode").value;
+  
+  var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
+  // var usmx = new RegExp("^\\d{5}(-{0,1}\\d{4})?$");
+  var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
   
   // if country is blank
-  if (country.value == "unitedStates" || country.value == "mexico") {
-    if (!usmx.test(zipcode.toString())) {
+  if (country.value === "unitedStates" || country.value === "mexico") {
+    console.log('country is US or Mexico');
+    console.log(userZipCode);
+    if (!usmx.test(userZipCode.toString())) {
       zipcodeError.textContent = 'Please enter a valid zip code.';
-    zipcodeError.className = 'error active';
-      return;
-  }
-  } else if (country.value == "canada") {
-    if (!can.test(zipcode.toString())) {
+      zipcodeError.className = 'error active';  
+    } else {
+      console.log('no error');
+      zipcodeError.textContent = ''; // Reset the content of the message
+      zipcodeError.className = 'error'; // Reset the visual state of the message
+    }
+  } else if (country.value === "canada") {
+    if (!can.test(userZipCode.toString())) {
       zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
     zipcodeError.className = 'error active';
-      return;
     }
-  } else {
-  zipcodeError.textContent = ''; // Reset the content of the message
-  zipcodeError.className = 'error'; // Reset the visual state of the message
-  }
-});
+  } 
+  // else {
+  // zipcodeError.textContent = ''; // Reset the content of the message
+  // zipcodeError.className = 'error'; // Reset the visual state of the message
+  // }
+}
+);
 
 
 
