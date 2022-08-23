@@ -109,7 +109,8 @@ input:focus {
 }
 
 /* This is our style for the invalid fields */
-input:invalid{
+/* input:user-invalid{ */
+  input:invalid{
   /* border-color: rgb(153, 0, 87); */
   /* background-color: rgb(216, 238, 91); */
   color: red;

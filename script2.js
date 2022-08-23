@@ -1,13 +1,15 @@
-const emailAddress = document.getElementById('email');
-const emailError = document.getElementById('emailError');
-const zipcode = document.getElementById('zipcode');
-const zipcodeError = document.getElementById('zipcodeError');
-const country = document.getElementById('country');
-const form3  = document.getElementById('form3');
-const password = document.getElementById('password');
-const passwordError = document.getElementById('passwordError');
-const confirmPassword = document.getElementById('confirmPassword');
-const confirmPasswordError = document.getElementById('confirmPasswordError');
+const  id = (id) => document.getElementById(id);
+
+const emailAddress = id('email');
+const emailError = id('emailError');
+const zipcode = id('zipcode');
+const zipcodeError = id('zipcodeError');
+const country = id('country');
+const form3  = id('form3');
+const password = id('password');
+const passwordError = id('passwordError');
+const confirmPassword = id('confirmPassword');
+const confirmPasswordError = id('confirmPasswordError');
 
 // CHECKING EMAIL ON INPUT
 emailAddress.addEventListener('input', () => {
