@@ -26,6 +26,7 @@ emailAddress.addEventListener('input', () => {
 
 // CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
 country.addEventListener('input', () => {
+  zipcode.value='';
   // if a country is selected
   if (country.value != "selectCountry") {
     // show the zipcode input
@@ -37,6 +38,20 @@ country.addEventListener('input', () => {
     zipcodeError.classList.add('hidden');
   }
 })
+
+
+// country.addEventListener('input', () => {
+//   // if a country is selected
+//   if (country.value != "selectCountry") {
+//     // show the zipcode input
+//     zipcode.classList.remove('hidden');
+//     zipcodeError.classList.remove('hidden');
+//   } else {
+//     // otherwise hide the zipcode input
+//     zipcode.classList.add('hidden');
+//     zipcodeError.classList.add('hidden');
+//   }
+// })
 
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('input', (event) => {
