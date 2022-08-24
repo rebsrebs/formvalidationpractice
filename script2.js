@@ -27,16 +27,17 @@ emailAddress.addEventListener('input', () => {
 // CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
 country.addEventListener('input', () => {
   zipcode.value='';
-  // if a country is selected
-  if (country.value != "selectCountry") {
-    // show the zipcode input
-    zipcode.classList.remove('hidden');
-    zipcodeError.classList.remove('hidden');
-  } else {
-    // otherwise hide the zipcode input
+  if (country.value === "selectCountry") {
     zipcode.classList.add('hidden');
     zipcodeError.classList.add('hidden');
+    return;
+  } else if (country.value === "unitedStates" || country.value === "mexico") {
+    zipcode.pattern = '/(^\\d{5}$)|(^\\d{5}-\\d{4}$)/';
+  } else if (country.value === "canada") {
+    zipcode.pattern = '/^[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d$/i';
   }
+  zipcode.classList.remove('hidden');
+  zipcodeError.classList.remove('hidden');
 })
 
 
@@ -54,35 +55,43 @@ country.addEventListener('input', () => {
 // })
 
 // CHECKING ZIPCODE ON INPUT
-zipcode.addEventListener('input', (event) => {
+zipcode.addEventListener('blur', (event) => {
   // get current zip code input value
-  let userZipCode = document.getElementById("zipcode").value;
+  // let userZipCode = document.getElementById("zipcode").value;
   // create regex expressions
-  var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
-  var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
-  // if country is US or Mexico
-  if (country.value === "unitedStates" || country.value === "mexico") {
-    // if zip code fails regex test show error message
-    if (!usmx.test(userZipCode.toString())) {
-      zipcodeError.textContent = 'Please enter a valid zip code.';
-      zipcodeError.className = 'error active';  
-    } else {
-      zipcodeError.textContent = ''; // Reset the content of the message
-      zipcodeError.className = 'error'; // Reset the visual state of the message
-    }
-  // if country is canada
-  } else if (country.value === "canada") {
-    // if zip code fails test
-    if (!can.test(userZipCode.toString())) {
-      // show error message
-      zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
-      zipcodeError.className = 'error active';
-    } else {
-      console.log('no error');
-      zipcodeError.textContent = ''; // Reset the content of the message
-      zipcodeError.className = 'error'; // Reset the visual state of the message
-    }
-  } 
+  if (!zipcode.validity.valid) {
+    console.log ('zipcode not good')
+    zipcodeError.className='error active'
+    zipcodeError.textContent='zipcode not good'
+  } else {
+    zipcodeError.className='error';
+    zipcodeError.textContent='';
+  }
+  // var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
+  // var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
+  // // if country is US or Mexico
+  // if (country.value === "unitedStates" || country.value === "mexico") {
+  //   // if zip code fails regex test show error message
+  //   if (!usmx.test(userZipCode.toString())) {
+  //     zipcodeError.textContent = 'Please enter a valid zip code.';
+  //     zipcodeError.className = 'error active';  
+  //   } else {
+  //     zipcodeError.textContent = ''; // Reset the content of the message
+  //     zipcodeError.className = 'error'; // Reset the visual state of the message
+  //   }
+  // // if country is canada
+  // } else if (country.value === "canada") {
+  //   // if zip code fails test
+  //   if (!can.test(userZipCode.toString())) {
+  //     // show error message
+  //     zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
+  //     zipcodeError.className = 'error active';
+  //   } else {
+  //     console.log('no error');
+  //     zipcodeError.textContent = ''; // Reset the content of the message
+  //     zipcodeError.className = 'error'; // Reset the visual state of the message
+  //   }
+  // } 
 }
 );
 
@@ -167,4 +176,10 @@ form3.addEventListener('submit', (event) => {
     // Then we prevent the form from being sent by canceling the event
     event.preventDefault();
   }
+
+  if (!zipcode.validity.valid) {
+    zipcodeError.textContent='you still need to fix your zip code.'
+    event.preventDefault();
+  }
+  zipcodeError.className='error active';
 });
