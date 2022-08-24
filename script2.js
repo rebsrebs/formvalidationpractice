@@ -1,25 +1,22 @@
 const  id = (id) => document.getElementById(id);
 
+const form3  = id('form3');
 const emailAddress = id('email');
 const emailError = id('emailError');
+const country = id('country');
 const zipcode = id('zipcode');
 const zipcodeError = id('zipcodeError');
-const country = id('country');
-const form3  = id('form3');
 const password = id('password');
 const passwordError = id('passwordError');
 const confirmPassword = id('confirmPassword');
 const confirmPasswordError = id('confirmPasswordError');
 
-// CHECKING EMAIL ON INPUT
-emailAddress.addEventListener('input', () => {
-  // if the email address is valid:
+// CHECKING EMAIL
+emailAddress.addEventListener('blur', () => {
   if (emailAddress.validity.valid) {
-    // remove error message
-    emailError.textContent = ''; // Reset the content of the message
-    emailError.className = 'error'; // Reset the visual state of the message
+    emailError.textContent = ''; 
+    emailError.className = 'error'; 
   } else {
-    // If there is still an error, show the correct error
     emailShowError();
   }
 })
@@ -55,14 +52,14 @@ country.addEventListener('input', () => {
 // })
 
 // CHECKING ZIPCODE ON INPUT
-zipcode.addEventListener('blur', (event) => {
-  // get current zip code input value
-  // let userZipCode = document.getElementById("zipcode").value;
-  // create regex expressions
-  if (!zipcode.validity.valid) {
+zipcode.addEventListener('blur', () => {
+  if (!zipcode.checkValidity()) {
+    console.log(zipcode.checkValidity());
     console.log ('zipcode not good')
+    console.log( zipcode.pattern)
     zipcodeError.className='error active'
     zipcodeError.textContent='zipcode not good'
+    zipcode.setCustomValidity('string')
   } else {
     zipcodeError.className='error';
     zipcodeError.textContent='';
@@ -97,53 +94,36 @@ zipcode.addEventListener('blur', (event) => {
 
 function emailShowError() {
   if (emailAddress.validity.valueMissing) {
-    // If the field is empty,
-    // display the following error message.
     emailError.textContent = 'You need to enter an e-mail address.';
   } else if (emailAddress.validity.typeMismatch) {
-    // If the field doesn't contain an email address,
-    // display the following error message.
     emailError.textContent = 'Entered value needs to be an e-mail address.';
   } else if (emailAddress.validity.tooShort) {
-    // If the data is too short,
-    // display the following error message.
     emailError.textContent = `Email should be at least ${emailAddress.minLength} characters; you entered ${emailAddress.value.length}.`;
   }
-  // Set the styling appropriately
   emailError.className = 'error active';
 }
 
-// CHECKING PASSWORD ON INPUT
-password.addEventListener('input', (event) => {
-  // Each time the user types something, we check if the
-  // form fields are valid.
-  // if the email address is valid:
+// CHECKING PASSWORD
+password.addEventListener('blur', (event) => {
   if (password.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    passwordError.textContent = ''; // Reset the content of the message
-    passwordError.className = 'error'; // Reset the visual state of the message
+    passwordError.textContent = '';
+    passwordError.className = 'error';
   } else {
-    // If there is still an error, show the correct error
     passwordError.className = 'error active';
     passwordError.textContent = 'Must contain at least 8 characters, 1 letter, 1 number and 1 special character.'
   }
 });
 
-// CHECKING CONFIRM PASSWORD ON INPUT
-confirmPassword.addEventListener('input', (event) => {
+// CHECKING CONFIRM PASSWORD
+confirmPassword.addEventListener('blur', (event) => {
   console.log(`password.value is ${password.value}`);
   console.log(`confirmPassword.value is ${confirmPassword.value}`);
-  // if the email address is valid:
   if (confirmPassword.value != password.value) {
-    // If there is still an error, show the correct error
     confirmPasswordError.className = 'error active';
     confirmPasswordError.textContent = 'Must match password.'
   } else {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    confirmPasswordError.textContent = ''; // Reset the content of the message
-    confirmPasswordError.className = 'error'; // Reset the visual state of the message
+    confirmPasswordError.textContent = '';
+    confirmPasswordError.className = 'error';
   }
 });
 
@@ -154,9 +134,6 @@ const eyes = document.querySelectorAll('.showhide');
       let id = event.target.getAttribute("data-pwd");
       let targetIcon = event.target;
       let targetInput = document.getElementById(id)
-      console.log(id);
-      console.log(targetInput);
-      console.log(targetInput.type);
       if (targetInput.type=='password') {
         targetInput.type='text';
         targetIcon.src='./images/eye-off.svg';
@@ -167,19 +144,15 @@ const eyes = document.querySelectorAll('.showhide');
     });
   }
 
-// CHECKING ON SUBMIT
+// CHECKING FORM ON SUBMIT
 form3.addEventListener('submit', (event) => {
-  // if the email field is valid, we let the form submit
   if (!emailAddress.validity.valid) {
-    // If it isn't, we display an appropriate error message
     emailShowError();
-    // Then we prevent the form from being sent by canceling the event
     event.preventDefault();
   }
-
   if (!zipcode.validity.valid) {
     zipcodeError.textContent='you still need to fix your zip code.'
+    zipcodeError.className='error active';
     event.preventDefault();
   }
-  zipcodeError.className='error active';
 });
