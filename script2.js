@@ -11,6 +11,25 @@ const passwordError = id('passwordError');
 const confirmPassword = id('confirmPassword');
 const confirmPasswordError = id('confirmPasswordError');
 
+// UTILITY FUNCTIONS
+const isRequired = value => value === '' ? false : true;
+const isBetween = (length, min, max) => length < min || length > max ? false : true;
+const matchesPattern = function(value, pattern) {
+  var testPattern = newRegex(pattern);
+  return !testPattern.test(value.toString());
+}
+const isEmailValid = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+};
+const isPasswordSecure = (password) => {
+  const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  return re.test(password);
+};
+
+
+
+
 // CHECKING EMAIL
 emailAddress.addEventListener('blur', () => {
   if (emailAddress.validity.valid) {
@@ -156,3 +175,4 @@ form3.addEventListener('submit', (event) => {
     event.preventDefault();
   }
 });
+
