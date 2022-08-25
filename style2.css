@@ -92,7 +92,8 @@ select {
 }
 
 /* Everything in right column */
-input, label, .error, button, .formheader, select {
+/* input, label, .error, select, */
+button, .formheader,  .formfield {
   grid-column: 2 / 3;
   width: 100%;
 }

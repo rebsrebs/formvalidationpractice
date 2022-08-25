@@ -13,11 +13,14 @@
         <h3 class="formheader">Register</h3>
 
         <!-- EMAIL -->
+        <div class="formfield">
         <label for="email" class="label-hidden">Email address*:</label>
         <input type="email" name="email" id="email" placeholder="E-mail address*" required>
         <p class="error" id="emailError"></p>
+        </div>
 
         <!-- COUNTRY -->
+        <div class="formfield">
         <label for="country" class="label-hidden">Country:</label>
         <!-- <input type="country" name="country" id="country" placeholder="Country"> -->
         <select name="country" id="country">
@@ -27,27 +30,36 @@
           <option value="unitedStates">United States</option>
       </select>
       <p class="error" id="countryError"></p>
+    </div>
 
       <!-- ZIP CODE -->
+      <div class="formfield">
         <label for="zipcode" class="label-hidden">Zip Code:</label>
         <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden">
         <p class="error hidden" id="zipcodeError"></p>
+      </div>
 
         <!-- PASSWORD -->
+      
         <div data-icon="eye">
           <img src="./images/eye.svg" alt="eye" class="icon showhide" data-pwd="password">
         </div>
+        <div class="formfield">
         <label for="password" class="label-hidden">Password:*</label>
         <input type="password" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
+      </div>
 
         <!-- CONFIRM PASSWORD -->
+        
         <div data-icon="eye-off">
           <img src="./images/eye.svg" alt="eye" class="icon showhide" data-pwd="confirmPassword">
         </div>
+        <div class="formfield">
         <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
         <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
         <p class="error" id="confirmPasswordError"></p>
+      </div>
 
         <!-- SUBMIT BUTTON -->
         <button type="submit" class="submitButton">
