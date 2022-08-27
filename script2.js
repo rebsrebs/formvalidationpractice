@@ -1,5 +1,6 @@
 const  id = (id) => document.getElementById(id);
 
+// VARIABLES
 const form3  = id('form3');
 const emailAddress = id('email');
 const emailError = id('emailError');
@@ -23,8 +24,9 @@ const isEmailValid = (email) => {
   return re.test(email);
 };
 const isPasswordSecure = (password) => {
-  const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-  return re.test(password);
+  // const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  const re2 = new RegExp('^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$');
+  return re2.test(password);
 };
 
 
@@ -120,6 +122,7 @@ function emailShowError() {
     emailError.textContent = `Email should be at least ${emailAddress.minLength} characters; you entered ${emailAddress.value.length}.`;
   }
   emailError.className = 'error active';
+  // showError(email);
 }
 
 // CHECKING PASSWORD
@@ -175,4 +178,28 @@ form3.addEventListener('submit', (event) => {
     event.preventDefault();
   }
 });
+
+
+const showError = (input, message) => {
+  console.log('showError is running');
+  // get the formfield div that surrounds the input
+  const formField = input.parentElement;
+  // add the error class
+  formField.classList.remove('success');
+  formField.classList.add('error');
+  // show the error message
+  const error = formField.querySelector('.error');
+  error.textContent = message;
+};
+
+const showSuccess = (input) => {
+  // get the form-field element
+  const formField = input.parentElement;
+  // remove the error class
+  formField.classList.remove('error');
+  formField.classList.add('success');
+  // hide the error message
+  const error = formField.querySelector('.error');
+  error.textContent = '';
+}
 

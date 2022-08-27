@@ -75,6 +75,12 @@ fieldset {
   outline: none;
   box-shadow: var(--shadow-1);
   font-size: 16px;
+  background-color: white;
+}
+
+/* doesn't work */
+input:-webkit-autofill {
+  background-color: white !important;
 }
 
 .information input,
@@ -128,8 +134,8 @@ input:focus:invalid {
   width  : 100%;
   padding: 0;
   font-size: 80%;
-  color: white;
-  background-color: #900;
+  color: rgb(218, 31, 31);
+  background-color: rgb(241, 242, 234);
   border-radius: 0 0 0 0;
   box-sizing: border-box;
 }
@@ -167,4 +173,15 @@ button:active {
 
 .hidden {
   display: none;
+}
+
+.formfield.success:before {
+  content: '✓';
+  color: green;
+}
+
+/* [class*="formfield error"]:before { */
+  .inputError {
+  content: 'x';
+  color: red;
 }
