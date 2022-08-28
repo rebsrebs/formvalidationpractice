@@ -44,18 +44,25 @@ emailAddress.addEventListener('blur', () => {
 
 // CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
 country.addEventListener('input', () => {
+  // when you select a country, set zipcode value to nothing
   zipcode.value='';
   if (country.value === "selectCountry") {
+    // hide the zipcode input and the zipcode error box
     zipcode.classList.add('hidden');
     zipcodeError.classList.add('hidden');
     return;
-  } else if (country.value === "unitedStates" || country.value === "mexico") {
-    zipcode.pattern = '/(^\\d{5}$)|(^\\d{5}-\\d{4}$)/';
-  } else if (country.value === "canada") {
-    zipcode.pattern = '/^[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d$/i';
-  }
+  //   // otherwise if country is US or Mexico set the input's pattern
+  // } else if (country.value === "unitedStates" || country.value === "mexico") {
+  //   zipcode.pattern = '/(^\\d{5}$)|(^\\d{5}-\\d{4}$)/';
+  //   // otherwise if country is Canada set the input's pattern
+  // } else if (country.value === "canada") {
+  //   zipcode.pattern = '/^[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d$/i';
+  // }
+  } else {
+  // show the zipcode input and the zipcode error area
   zipcode.classList.remove('hidden');
   zipcodeError.classList.remove('hidden');
+  }
 })
 
 
@@ -74,44 +81,50 @@ country.addEventListener('input', () => {
 
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('blur', () => {
-  if (!zipcode.checkValidity()) {
-    console.log(zipcode.checkValidity());
-    console.log ('zipcode not good')
-    console.log( zipcode.pattern)
-    zipcodeError.className='error active'
-    zipcodeError.textContent='zipcode not good'
-    zipcode.setCustomValidity('string')
-  } else {
-    zipcodeError.className='error';
-    zipcodeError.textContent='';
-  }
-  // var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
-  // var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
-  // // if country is US or Mexico
-  // if (country.value === "unitedStates" || country.value === "mexico") {
-  //   // if zip code fails regex test show error message
-  //   if (!usmx.test(userZipCode.toString())) {
-  //     zipcodeError.textContent = 'Please enter a valid zip code.';
-  //     zipcodeError.className = 'error active';  
-  //   } else {
-  //     zipcodeError.textContent = ''; // Reset the content of the message
-  //     zipcodeError.className = 'error'; // Reset the visual state of the message
-  //   }
-  // // if country is canada
-  // } else if (country.value === "canada") {
-  //   // if zip code fails test
-  //   if (!can.test(userZipCode.toString())) {
-  //     // show error message
-  //     zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
-  //     zipcodeError.className = 'error active';
-  //   } else {
-  //     console.log('no error');
-  //     zipcodeError.textContent = ''; // Reset the content of the message
-  //     zipcodeError.className = 'error'; // Reset the visual state of the message
-  //   }
-  // } 
-}
-);
+  var userZipCode = zipcode.value;
+  console.log(userZipCode);
+  // is this the problem?
+//   if (!zipcode.validity.valid) {
+//     console.log ('zipcode not good')
+//     console.log( zipcode.pattern)
+//     zipcodeError.className='error active'
+//     zipcodeError.textContent='Please enter a valid zipcode.'
+//     // what is happening here?
+//     zipcode.setCustomValidity('string')
+//   } else {
+//     zipcodeError.className='error';
+//     zipcodeError.textContent='';
+//   }
+
+  var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
+  var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
+  // if country is US or Mexico
+  if (country.value === "unitedStates" || country.value === "mexico") {
+    // if zip code fails regex test show error message
+    if (!usmx.test(userZipCode.toString())) {
+      console.log('zipcode failed');
+      zipcodeError.textContent = 'Please enter a valid zip code.';
+      zipcodeError.className = 'error active';  
+    } else {
+      console.log('zipcode passed');
+      zipcodeError.textContent = ''; // Reset the content of the message
+      zipcodeError.className = 'error'; // Reset the visual state of the message
+    }
+  // if country is canada
+  } else if (country.value === "canada") {
+    // if zip code fails test
+    if (!can.test(userZipCode.toString())) {
+      // show error message
+      zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
+      zipcodeError.className = 'error active';
+    } else {
+      console.log('no error');
+      zipcodeError.textContent = ''; // Reset the content of the message
+      zipcodeError.className = 'error'; // Reset the visual state of the message
+    }
+  } 
+});
+
 
 function emailShowError() {
   if (emailAddress.validity.valueMissing) {
@@ -132,7 +145,7 @@ password.addEventListener('blur', (event) => {
     passwordError.className = 'error';
   } else {
     passwordError.className = 'error active';
-    passwordError.textContent = 'Must contain at least 8 characters, 1 letter, 1 number and 1 special character.'
+    passwordError.textContent = 'Password must contain at least 8 characters, and at least 1 letter, 1 number, and 1 special character.'
   }
 });
 
