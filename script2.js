@@ -4,7 +4,6 @@ const  id = (id) => document.getElementById(id);
 const form3  = id('form3');
 const emailAddress = id('email');
 const emailError = id('emailError');
-const country = id('country');
 const zipcode = id('zipcode');
 const zipcodeError = id('zipcodeError');
 const password = id('password');
@@ -44,6 +43,7 @@ emailAddress.addEventListener('blur', () => {
 
 // CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
 country.addEventListener('input', () => {
+  const country = id('country');
   // when you select a country, set zipcode value to nothing
   zipcode.value='';
   if (country.value === "selectCountry") {
@@ -81,8 +81,8 @@ country.addEventListener('input', () => {
 
 // CHECKING ZIPCODE ON INPUT
 zipcode.addEventListener('blur', () => {
-  var userZipCode = zipcode.value;
-  console.log(userZipCode);
+  console.log('zipcode blur');
+  const userZipCode = zipcode.value;
   // is this the problem?
 //   if (!zipcode.validity.valid) {
 //     console.log ('zipcode not good')
