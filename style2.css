@@ -175,6 +175,7 @@ button:active {
   display: none;
 }
 
+
 .formfield.success:before {
   content: '✓';
   color: green;
@@ -184,4 +185,8 @@ button:active {
   .inputError {
   content: 'x';
   color: red;
+}
+
+.success {
+  border: green 1px solid;
 }

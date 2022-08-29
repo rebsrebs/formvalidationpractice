@@ -4,6 +4,7 @@ const  id = (id) => document.getElementById(id);
 const form3  = id('form3');
 const emailAddress = id('email');
 const emailError = id('emailError');
+const country = id('country');
 const zipcode = id('zipcode');
 const zipcodeError = id('zipcodeError');
 const password = id('password');
@@ -41,88 +42,34 @@ emailAddress.addEventListener('blur', () => {
   }
 })
 
-// CHECK FOR COUNTRY TO SHOW OR HIDE ZIPCODE INPUT
-country.addEventListener('input', () => {
-  const country = id('country');
-  // when you select a country, set zipcode value to nothing
+// COUNTRY CHANGE EVENT LISTENER
+country.addEventListener('change', ()=>{
   zipcode.value='';
   if (country.value === "selectCountry") {
-    // hide the zipcode input and the zipcode error box
     zipcode.classList.add('hidden');
     zipcodeError.classList.add('hidden');
     return;
-  //   // otherwise if country is US or Mexico set the input's pattern
-  // } else if (country.value === "unitedStates" || country.value === "mexico") {
-  //   zipcode.pattern = '/(^\\d{5}$)|(^\\d{5}-\\d{4}$)/';
-  //   // otherwise if country is Canada set the input's pattern
-  // } else if (country.value === "canada") {
-  //   zipcode.pattern = '/^[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d$/i';
-  // }
   } else {
-  // show the zipcode input and the zipcode error area
-  zipcode.classList.remove('hidden');
-  zipcodeError.classList.remove('hidden');
+    zipcode.classList.remove('hidden');
+    zipcodeError.classList.remove('hidden');
+      if (country.value === "unitedStates" || country.value === "mexico") {
+      zipcode.pattern='(^\\d{5}$)|(^\\d{5}-\\d{4}$)';
+      } else if (country.value === "canada") {
+      // zipcode.pattern='^[ABCEGHJ-NPRSTVXY]\\d[ABCEGHJ-NPRSTV-Z][ -]?\\d[ABCEGHJ-NPRSTV-Z]\\d$';
+      zipcode.pattern='^[^\\W\\d_DFIOQUWZdfioquwz]\\d[^\\W\\d_DFIOQUdfioqu][ -]?\\d[^\\W\\d_DFIOQUdfioqu]\\d$';
+    }
   }
-})
+});
 
-
-// country.addEventListener('input', () => {
-//   // if a country is selected
-//   if (country.value != "selectCountry") {
-//     // show the zipcode input
-//     zipcode.classList.remove('hidden');
-//     zipcodeError.classList.remove('hidden');
-//   } else {
-//     // otherwise hide the zipcode input
-//     zipcode.classList.add('hidden');
-//     zipcodeError.classList.add('hidden');
-//   }
-// })
-
-// CHECKING ZIPCODE ON INPUT
+// ZIPCODE BLUR EVENT LISTENER
 zipcode.addEventListener('blur', () => {
-  console.log('zipcode blur');
-  const userZipCode = zipcode.value;
-  // is this the problem?
-//   if (!zipcode.validity.valid) {
-//     console.log ('zipcode not good')
-//     console.log( zipcode.pattern)
-//     zipcodeError.className='error active'
-//     zipcodeError.textContent='Please enter a valid zipcode.'
-//     // what is happening here?
-//     zipcode.setCustomValidity('string')
-//   } else {
-//     zipcodeError.className='error';
-//     zipcodeError.textContent='';
-//   }
-
-  var usmx = new RegExp(/(^\d{5}$)|(^\d{5}-\d{4}$)/);
-  var can = new RegExp(/^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/i);
-  // if country is US or Mexico
-  if (country.value === "unitedStates" || country.value === "mexico") {
-    // if zip code fails regex test show error message
-    if (!usmx.test(userZipCode.toString())) {
-      console.log('zipcode failed');
-      zipcodeError.textContent = 'Please enter a valid zip code.';
-      zipcodeError.className = 'error active';  
-    } else {
-      console.log('zipcode passed');
-      zipcodeError.textContent = ''; // Reset the content of the message
-      zipcodeError.className = 'error'; // Reset the visual state of the message
-    }
-  // if country is canada
-  } else if (country.value === "canada") {
-    // if zip code fails test
-    if (!can.test(userZipCode.toString())) {
-      // show error message
-      zipcodeError.textContent = 'Please enter a valid Canadian zip code.';
-      zipcodeError.className = 'error active';
-    } else {
-      console.log('no error');
-      zipcodeError.textContent = ''; // Reset the content of the message
-      zipcodeError.className = 'error'; // Reset the visual state of the message
-    }
-  } 
+  if (!zipcode.validity.valid) {
+    zipcodeError.className='error active'
+    zipcodeError.textContent='Please enter a valid zipcode.'
+  } else {
+    zipcodeError.className='error';
+    zipcodeError.textContent='';
+  }
 });
 
 
@@ -206,8 +153,10 @@ const showError = (input, message) => {
 };
 
 const showSuccess = (input) => {
+  console.log('show success function')
   // get the form-field element
   const formField = input.parentElement;
+  console.log(formField)
   // remove the error class
   formField.classList.remove('error');
   formField.classList.add('success');

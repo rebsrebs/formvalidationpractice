@@ -35,7 +35,7 @@
       <!-- ZIP CODE -->
       <div class="formfield">
         <label for="zipcode" class="label-hidden">Zip Code:</label>
-        <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden">
+        <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/">
         <p class="error hidden" id="zipcodeError"></p>
       </div>
 
