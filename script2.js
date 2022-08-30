@@ -64,11 +64,13 @@ country.addEventListener('change', ()=>{
 // ZIPCODE BLUR EVENT LISTENER
 zipcode.addEventListener('blur', () => {
   if (!zipcode.validity.valid) {
-    zipcodeError.className='error active'
-    zipcodeError.textContent='Please enter a valid zipcode.'
+    showError(zipcode, 'Please enter a valid zipcode.');
+    // zipcodeError.className='error active'
+    // zipcodeError.textContent='Please enter a valid zipcode.'
   } else {
-    zipcodeError.className='error';
-    zipcodeError.textContent='';
+    // zipcodeError.className='error';
+    // zipcodeError.textContent='';
+    showSuccess(zipcode);
   }
 });
 
@@ -140,28 +142,42 @@ form3.addEventListener('submit', (event) => {
 });
 
 
+// const showError = (input, message) => {
+//   console.log('showError is running');
+//   // get the formfield div that surrounds the input
+//   const formField = input.parentElement;
+//   // add the error class
+//   formField.classList.remove('success');
+//   formField.classList.add('error');
+//   // show the error message
+//   const error = formField.querySelector('.error');
+//   error.textContent = message;
+// };
+
 const showError = (input, message) => {
-  console.log('showError is running');
-  // get the formfield div that surrounds the input
-  const formField = input.parentElement;
-  // add the error class
-  formField.classList.remove('success');
-  formField.classList.add('error');
-  // show the error message
-  const error = formField.querySelector('.error');
-  error.textContent = message;
-};
+  const theID = input.getAttribute('data-errorid');
+  const errorP  = id(theID);
+  errorP.textContent = message;
+  errorP.className = 'error active';
+}
 
 const showSuccess = (input) => {
-  console.log('show success function')
-  // get the form-field element
-  const formField = input.parentElement;
-  console.log(formField)
-  // remove the error class
-  formField.classList.remove('error');
-  formField.classList.add('success');
-  // hide the error message
-  const error = formField.querySelector('.error');
-  error.textContent = '';
+  const theID = input.getAttribute('data-errorid');
+  const errorP  = id(theID);
+  errorP.textContent = '';
+  errorP.className = 'error';
 }
+
+// const showSuccess = (input) => {
+//   console.log('show success function')
+//   // get the form-field element
+//   const formField = input.parentElement;
+//   console.log(formField)
+//   // remove the error class
+//   formField.classList.remove('error');
+//   formField.classList.add('success');
+//   // hide the error message
+//   const error = formField.querySelector('.error');
+//   error.textContent = '';
+// }
 
