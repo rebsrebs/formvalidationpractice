@@ -16,6 +16,7 @@
         <label for="email" class="label-hidden">Email address*:</label>
         <input type="email" name="email" id="email" placeholder="E-mail address*" data-errorid="emailError" required>
         <p class="error" id="emailError"></p>
+        <p class="feedback hidden" id="emailFeedback"></p>
 
         <!-- COUNTRY -->
         <label for="country" class="label-hidden">Country:</label>
@@ -27,11 +28,13 @@
           <option value="unitedStates">United States</option>
         </select>
         <p class="error" id="countryError"></p>
+        <p class="feedback hidden" id="countryFeedback"></p>
  
         <!-- ZIP CODE -->
         <label for="zipcode" class="label-hidden">Zip Code:</label>
         <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" data-errorid="zipcodeError">
         <p class="error hidden" id="zipcodeError"></p>
+        <p class="feedback hidden" id="zipcodeFeebback"></p>
 
         <!-- PASSWORD -->
         <div data-icon="eye" class="showhide">
@@ -41,6 +44,7 @@
         <label for="password" class="label-hidden">Password:*</label>
         <input type="password" data-errorid="passwordError" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Password*"required>
         <p class="error" id="passwordError"></p>
+        <p class="feedback hidden" id="passwordFeebdack"></p>
 
         <!-- CONFIRM PASSWORD -->
         <div data-icon="eye-off" class="showhide">
@@ -50,6 +54,7 @@
         <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
         <input type="password" data-errorid="confirmPasswordError" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
         <p class="error" id="confirmPasswordError"></p>
+        <p class="feedback hidden" id="confirmPasswordFeedback"></p>
 
         <!-- SUBMIT BUTTON -->
         <button type="submit" class="submitButton">
