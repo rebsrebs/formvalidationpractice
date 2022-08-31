@@ -65,7 +65,7 @@ password.addEventListener('blur', () => {
 confirmPassword.addEventListener('blur', () => {
   if (confirmPassword.value != password.value) {
     showError(confirmPassword, 'Must match password.');
-  } else {
+  } else if (password.value != '' && confirmPassword.value === password.value) {
     showSuccess(confirmPassword);
   }
 });
@@ -101,17 +101,21 @@ form3.addEventListener('submit', (event) => {
 // DISPLAY ERROR FUNCTIONS
 
 const showError = (input, message) => {
-  const theID = input.getAttribute('data-errorid');
-  const errorP  = id(theID);
+  const errorID = input.getAttribute('data-errorid');
+  const errorP  = id(errorID);
   errorP.textContent = message;
   errorP.className = 'error active';
 }
 
 const showSuccess = (input) => {
-  const theID = input.getAttribute('data-errorid');
-  const errorP  = id(theID);
+  const errorID = input.getAttribute('data-errorid');
+  const errorP  = id(errorID);
   errorP.textContent = '';
   errorP.className = 'error';
+  const feedbackID = input.getAttribute('data-feedbackid');
+  const feedback = id(feedbackID);
+  feedback.className = 'feedback'
+  feedback.textContent = '✓'
 }
 
 function emailShowError() {
