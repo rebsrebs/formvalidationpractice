@@ -90,6 +90,12 @@ form3.addEventListener('submit', (event) => {
     showError(confirmPassword, 'Must match password.');
     event.preventDefault();
   }
+  if (emailAddress.validity.valid && zipcode.validity.valid && password.validity.valid && confirmPassword.value === password.value) {
+    event.preventDefault();
+    form3.reset();
+    alert('You successfully submitted your form.')
+  }
+
 });
 
 // DISPLAY ERROR FUNCTIONS
