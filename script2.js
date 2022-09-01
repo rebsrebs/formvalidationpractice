@@ -109,11 +109,15 @@ const showError = (input, message) => {
 
 const showSuccess = (input) => {
   const errorID = input.getAttribute('data-errorid');
+  console.log(`errorID is ${errorID}`);
   const errorP  = id(errorID);
   errorP.textContent = '';
   errorP.className = 'error';
   const feedbackID = input.getAttribute('data-feedbackid');
+  console.log(`feedbackID is ${feedbackID}`);
   const feedback = id(feedbackID);
+  console.log(feedback);
+  // problem here when password is passed 
   feedback.className = 'feedback active'
   feedback.textContent = '✓'
 }

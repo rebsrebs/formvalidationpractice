@@ -145,11 +145,13 @@ input:focus:invalid {
   border-radius: 0 0 0 0;
   box-sizing: border-box;
   text-align: center;
+  height: 0;
 }
 
 .error.active {
   padding: 0.3em;
   margin-top:0px; 
+  height: auto;
 }
 
 /* BUTTON */
@@ -187,13 +189,16 @@ button:active {
   padding-right: 5px;
 } */
 
-/* .feedback {
+ .feedback {
   color: rgb(68, 128, 9);
   margin-left: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
   padding: 0;
-  
+  height: auto;
+  align-self: center;
 }
-
+/*
 .feedback.active {
   padding: 0.3em;
   margin-top:0px; 
