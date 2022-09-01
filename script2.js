@@ -114,7 +114,7 @@ const showSuccess = (input) => {
   errorP.className = 'error';
   const feedbackID = input.getAttribute('data-feedbackid');
   const feedback = id(feedbackID);
-  feedback.className = 'feedback'
+  feedback.className = 'feedback active'
   feedback.textContent = '✓'
 }
 

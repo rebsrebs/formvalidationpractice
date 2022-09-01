@@ -14,27 +14,29 @@
 
         <!-- EMAIL -->
         <label for="email" class="label-hidden">Email address*:</label>
-        <input type="email" name="email" id="email" placeholder="E-mail address*" data-errorid="emailError" required>
+        <input type="email" name="email" id="email" placeholder="E-mail address*" data-errorid="emailError" data-feedbackid="emailFeedback" required>
+        <!-- <p class="feedback" id="emailFeedback"></p> -->
         <p class="error" id="emailError"></p>
-        <p class="feedback hidden" id="emailFeedback"></p>
+        
 
         <!-- COUNTRY -->
         <label for="country" class="label-hidden">Country:</label>
-        <!-- <input type="country" name="country" id="country" placeholder="Country"> -->
-        <select name="country" id="country" data-errorid="countryError">
+        <select name="country" id="country" data-errorid="countryError" data-feedbackid="countryFeedback">
           <option value="selectCountry">--Please choose a country--</option>
           <option value="canada">Canada</option>
           <option value="mexico">Mexico</option>
           <option value="unitedStates">United States</option>
         </select>
+        <!-- <p class="feedback" id="countryFeedback"></p> -->
         <p class="error" id="countryError"></p>
-        <p class="feedback hidden" id="countryFeedback"></p>
+        
  
         <!-- ZIP CODE -->
         <label for="zipcode" class="label-hidden">Zip Code:</label>
-        <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" data-errorid="zipcodeError">
+        <input type="text" name="zipcode" id="zipcode" placeholder="Zip code" class="hidden" pattern="/(^\d{5}$)|(^\d{5}-\d{4}$)/" data-errorid="zipcodeError" data-feedbackid="zipcodeFeedback">
+        <!-- <p class="feedback" id="zipcodeFeedback"></p> -->
         <p class="error hidden" id="zipcodeError"></p>
-        <p class="feedback hidden" id="zipcodeFeebback"></p>
+        
 
         <!-- PASSWORD -->
         <div data-icon="eye" class="showhide">
@@ -42,9 +44,10 @@
         </div>
 
         <label for="password" class="label-hidden">Password:*</label>
-        <input type="password" data-errorid="passwordError" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Password*"required>
+        <input type="password" data-errorid="passwordError" data-feedbackid="passwordFeedback" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Password*"required>
+        <!-- <p class="feedback" id="passwordFeebdack"></p> -->
         <p class="error" id="passwordError"></p>
-        <p class="feedback hidden" id="passwordFeebdack"></p>
+        
 
         <!-- CONFIRM PASSWORD -->
         <div data-icon="eye-off" class="showhide">
@@ -52,9 +55,11 @@
         </div>
 
         <label for="confirmPassword" class="label-hidden">Confirm password:*</label>
-        <input type="password" data-errorid="confirmPasswordError" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
+        <input type="password" data-errorid="confirmPasswordError" 
+        data-feedbackid="confirmPasswordFeedback" name="confirmPassword" id="confirmPassword" placeholder="Confirm password*" required>
+        <!-- <p class="feedback" id="confirmPasswordFeedback"></p> -->
         <p class="error" id="confirmPasswordError"></p>
-        <p class="feedback hidden" id="confirmPasswordFeedback"></p>
+        
 
         <!-- SUBMIT BUTTON -->
         <button type="submit" class="submitButton">
