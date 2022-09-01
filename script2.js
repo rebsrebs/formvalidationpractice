@@ -105,6 +105,11 @@ const showError = (input, message) => {
   const errorP  = id(errorID);
   errorP.textContent = message;
   errorP.className = 'error active';
+  const feedbackID = input.getAttribute('data-feedbackid');
+  const feedback = id(feedbackID);
+  while (feedback.firstChild) {
+    feedback.removeChild(feedback.firstChild);
+  } 
 }
 
 const showSuccess = (input) => {
@@ -119,7 +124,13 @@ const showSuccess = (input) => {
   console.log(feedback);
   // problem here when password is passed 
   feedback.className = 'feedback active'
-  feedback.textContent = '✓'
+  // feedback.textContent = '✓'
+
+  if (feedback.children.length === 0) {
+  const checkMark = document.createElement('img');
+  checkMark.src='./images/check-circle-green.svg';
+  feedback.appendChild(checkMark);
+}
 }
 
 function emailShowError() {
